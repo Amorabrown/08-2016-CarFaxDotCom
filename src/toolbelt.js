@@ -22,3 +22,13 @@ toolbelt.transform = function(collection, callback){
 	});
 	return results;
 };
+
+toolbelt.filterBy = function(collection, callback) {
+  var results = [];
+  toolbelt.loop(collection, function(element) {
+    if (callback(element)) {
+      results.push(element);
+    }
+  });
+  return results;
+};

@@ -86,11 +86,43 @@ var result = filterByColor(carData, "champagne");
 console.log(result);
 
 
+var filterAboveYear = function(collection, year) {
+	var resultArray = [];	
+	toolbelt.loop(collection, function(element) {
+		if (element.year > year) {
+			resultArray.push(element);
+		}
+	});
+	return resultArray;
+}
+var result = filterAboveYear(carData, 1992);
+console.log(result);
 
 
+var filterBelowYear = function(collection, year) {
+	var newArray = [];
+	toolbelt.loop(collection, function(element) {
+		if (element.year < year) {
+			newArray.push(element);
+		}
+	});
+	return newArray;
+};
+var result = filterBelowYear(carData, 1997);
+console.log(result);
 
+// testing filterBy
+var numbers = [1, 2, 3, 4, 5];
+var onlyEvens = toolbelt.filterBy(numbers, function(number){
+    return number % 2 === 0;
+});
+console.log(onlyEvens);
 
+console.log("After implementing toolbelt.filterBy");
 
-
-
-
+var filterAboveYear = function(collection, year) {
+	return toolbelt.filterBy(collection, function(element) {
+		return element.year > year;
+	});
+}
+console.log(filterAboveYear(carData, 1995));
